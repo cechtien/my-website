@@ -1,0 +1,21 @@
+// Kiểm tra nếu người dùng đã đăng nhập
+if (localStorage.getItem('loggedIn')) {
+    alert('Bạn đã đăng nhập!');
+}
+
+// Xử lý sự kiện khi người dùng gửi biểu mẫu
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Ngăn chặn hành vi mặc định của biểu mẫu
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Kiểm tra thông tin đăng nhập
+    if (username === 'admin' && password === 'password') {
+        localStorage.setItem('loggedIn', 'true');
+        alert('Đăng nhập thành công!');
+        // Bạn có thể chuyển hướng đến trang khác ở đây
+    } else {
+        document.getElementById('message').textContent = 'Tên đăng nhập hoặc mật khẩu không chính xác.';
+    }
+});
